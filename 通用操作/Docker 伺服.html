@@ -1,0 +1,92 @@
+
+<!doctype html>
+<html lang="zh">
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Docker 伺服</title>
+    <link rel="stylesheet" href="./../assets/github-markdown-css.css">
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vditor/dist/index.css" />
+    
+
+    
+
+    
+    <script src="./../assets/font-end-lib/all_components.js"></script>
+    
+    
+
+    
+</head>
+
+
+
+<main id="static_app_llej" class="markdown-body">
+    <p data-block-id="20201227173504-opkavin">在服务器上伺服思源笔记最简单的方案是通过 Docker 部署，镜像名称是 <code>b3log/siyuan</code>，目前没有版本标签，只有最新版。</p>
+<p data-block-id="20201227200109-1swwwt1">搭建若遇到问题请到<a href="https://github.com/siyuan-note/siyuan/issues">思源笔记 Issues</a> 上反馈，谢谢。</p>
+<h2 id="文件结构" data-block-id="20201227174700-39dg7ur">文件结构<a id="vditorAnchor-文件结构" class="vditor-anchor" href="#文件结构"><svg viewBox="0 0 16 16" version="1.1" width="16" height="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p data-block-id="20201227174134-hptryqy">整体程序位于 <code>/opt/siyuan/</code> 下，基本上就是 Electron 安装包 resources 文件夹下的结构：</p>
+<ul data-block-id="20201227174705-0hl54vz">
+<li data-block-id="20201227174714-t7ew8rk">appearance：图标、主题、多语言</li>
+<li data-block-id="20201227174726-zztkpj2">guide：帮助文档</li>
+<li data-block-id="20201227174744-z7qo4j2">stage：界面和静态资源</li>
+<li data-block-id="20201227174842-tr8u7q0">kernel：内核程序</li>
+</ul>
+<h2 id="启动入口" data-block-id="20201227174908-s19h988">启动入口<a id="vditorAnchor-启动入口" class="vditor-anchor" href="#启动入口"><svg viewBox="0 0 16 16" version="1.1" width="16" height="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p data-block-id="20201227180709-rglrztt">构建 Docker 镜像时已经设置了入口：<code>ENTRYPOINT [ &quot;/opt/siyuan/kernel&quot; ]</code>，所以使用 <code>docker run b3log/siyuan</code> 即可启动，但这样是不能正常使用的，还需要设置一些参数，具体请参考
+<md2website-block-ref src="../%e9%80%9a%e7%94%a8%e6%93%8d%e4%bd%9c/%e5%90%af%e5%8a%a8%e5%8f%82%e6%95%b0.html#20201225172241-ifgc4hm" title="这里">这里</md2website-block-ref>
+。</p>
+<p data-block-id="20201227181257-ewvzfu0">必传的参数有：</p>
+<ul data-block-id="20201227201453-yh75kqd">
+<li data-block-id="20201227201514-c7brkss"><code>--conf</code> 指定配置文件夹路径，配置文件夹在宿主机上通过 <code>-v</code> 挂载到到容器中</li>
+<li data-block-id="20201227201521-fs7hlwf"><code>--resident</code> 指定为 true 常驻内存</li>
+</ul>
+<p data-block-id="20201227181436-2o8ssj3">下面是一条启动命令示例：</p>
+<p data-block-id="20201227181459-iml8ebp"><code>docker run -v conf_dir_host:conf_dir_container -v data_dir_host:data_dir_container -p 6806:6806 b3log/siyuan --resident=true --conf=conf_dir_container</code></p>
+<ul data-block-id="20201227174657-0k1ruhd">
+<li data-block-id="20201227193950-dp2hioi"><code>conf_dir_host</code>：宿主机上的配置文件夹路径</li>
+<li data-block-id="20201227194032-68h45ue"><code>conf_dir_container</code>：容器内配置文件夹路径，和后面 <code>--conf</code> 指定成一样的</li>
+<li data-block-id="20201227194227-k2r2xan"><code>data_dir_host</code>：宿主机数据文件夹路径</li>
+<li data-block-id="20201227194257-5idyo8v"><code>data_dir_container</code>：容器内数据文件夹路径</li>
+<li data-block-id="20201227194126-ys9bhgh">配置文件 conf.json 内 box path 字段需要在 <code>data_dir_container</code> 路径下</li>
+</ul>
+<p data-block-id="20201227194509-hdnzkry">为了简化，建议将 conf、data 文件夹路径在宿主机和容器上分别配置为一致的，比如：</p>
+<ul data-block-id="20201227194542-ejfp46x">
+<li data-block-id="20201227194543-y71qqsd"><code>conf_dir_host</code> 和 <code>conf_dir_container</code> 配置为 /siyuan/conf</li>
+<li data-block-id="20201227194623-2um0t40"><code>data_dir_host</code> 和 <code>data_dir_container</code> 配置为 /siyuan/data</li>
+</ul>
+<p data-block-id="20201227194830-86gbz55">对应的启动命令示例：</p>
+<p data-block-id="20201227194658-m3auzob"><code>docker run -v /siyuan/conf:/siyuan/conf -v /siyuan/data:/siyuan/data -p 6806:6806 b3log/siyuan --resident=true --conf=/siyuan/conf</code></p>
+<p data-block-id="20201227194736-2jetrvt">对应的 conf.json 中 box 配置示例：</p>
+<pre data-block-id="20201227194842-2bfxv59"><code class="language-json highlight-chroma"><span class="highlight-p">{</span>
+   <span class="highlight-nt">&#34;url&#34;</span><span class="highlight-p">:</span> <span class="highlight-s2">&#34;http://127.0.0.1:6806/siyuan/siyuan/思源笔记用户指南/&#34;</span><span class="highlight-p">,</span>
+   <span class="highlight-nt">&#34;name&#34;</span><span class="highlight-p">:</span> <span class="highlight-s2">&#34;思源笔记用户指南&#34;</span><span class="highlight-p">,</span>
+   <span class="highlight-nt">&#34;auth&#34;</span><span class="highlight-p">:</span> <span class="highlight-s2">&#34;&#34;</span><span class="highlight-p">,</span>
+   <span class="highlight-nt">&#34;user&#34;</span><span class="highlight-p">:</span> <span class="highlight-s2">&#34;&#34;</span><span class="highlight-p">,</span>
+   <span class="highlight-nt">&#34;password&#34;</span><span class="highlight-p">:</span> <span class="highlight-s2">&#34;&#34;</span><span class="highlight-p">,</span>
+   <span class="highlight-nt">&#34;path&#34;</span><span class="highlight-p">:</span> <span class="highlight-s2">&#34;/siyuan/data/思源笔记用户指南&#34;</span>
+<span class="highlight-p">}</span>
+</code></pre>
+<p data-block-id="20201227195523-uipfd0v">除了手动准备 conf.json，也可以通过调用内核 API 来打开/关闭文件夹。</p>
+<h2 id="内核-API" data-block-id="20201227194925-7ipoiv6">内核 API<a id="vditorAnchor-内核-API" class="vditor-anchor" href="#内核-API"><svg viewBox="0 0 16 16" version="1.1" width="16" height="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<h3 id="打开文件夹" data-block-id="20201227195443-zxgp2sw">打开文件夹<a id="vditorAnchor-打开文件夹" class="vditor-anchor" href="#打开文件夹"><svg viewBox="0 0 16 16" version="1.1" width="16" height="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p data-block-id="20201227195224-cnwhfri">POST <code>/notebook/mount</code>，参数：</p>
+<ul data-block-id="20201227195500-v08m84n">
+<li data-block-id="20201227195626-jsv1r80"><code>url</code>：固定传入 <code>http://127.0.0.1:6806/siyuan/</code>，即 box.url</li>
+<li data-block-id="20201227195644-i7xcm1g"><code>path</code>：内核数据文件夹下的某个文件夹路径，即 box.path</li>
+</ul>
+<h3 id="关闭文件夹" data-block-id="20201227195737-xbkf95m">关闭文件夹<a id="vditorAnchor-关闭文件夹" class="vditor-anchor" href="#关闭文件夹"><svg viewBox="0 0 16 16" version="1.1" width="16" height="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p data-block-id="20201227195742-df6gznf">POST <code>/notebook/unmount</code>，参数：</p>
+<ul data-block-id="20201227195758-qsyk4py">
+<li data-block-id="20201227195805-rq7h6m9"><code>url</code>：固定传入 <code>http://127.0.0.1:6806/siyuan/</code>，即 box.url</li>
+</ul>
+
+</main>
+</script>

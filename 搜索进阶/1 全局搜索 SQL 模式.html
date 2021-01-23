@@ -1,0 +1,92 @@
+
+<!doctype html>
+<html lang="zh">
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>1 全局搜索 SQL 模式</title>
+    <link rel="stylesheet" href="./../assets/github-markdown-css.css">
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vditor/dist/index.css" />
+    
+
+    
+
+    
+    <script src="./../assets/font-end-lib/all_components.js"></script>
+    
+    
+
+    
+</head>
+
+
+
+<main id="static_app_llej" class="markdown-body">
+    <h2 id="-表" data-block-id="20201117103851-l9cahuc"><code>blocks</code> 表<a id="vditorAnchor--表" class="vditor-anchor" href="#-表"><svg viewBox="0 0 16 16" version="1.1" width="16" height="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p data-block-id="20201224120447-bx9fwlf">该表用于存储内容块数据。</p>
+<table data-block-id="20201224120447-cs6ur9x">
+<thead>
+<tr>
+<th align="right">字段</th>
+<th align="center">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">id</td>
+<td align="center">text</td>
+<td>内容块 ID</td>
+</tr>
+<tr>
+<td align="right">box</td>
+<td align="center">text</td>
+<td>笔记本名</td>
+</tr>
+<tr>
+<td align="right">path</td>
+<td align="center">text</td>
+<td>内容块所在文档路径</td>
+</tr>
+<tr>
+<td align="right">tree_id</td>
+<td align="center">text</td>
+<td>抽象语法树 ID，和根节点 ID 相同</td>
+</tr>
+<tr>
+<td align="right">content</td>
+<td align="center">text</td>
+<td>内容块 Markdown</td>
+</tr>
+<tr>
+<td align="right">type</td>
+<td align="center">text</td>
+<td>内容块类型</td>
+</tr>
+<tr>
+<td align="right">time</td>
+<td align="center">text</td>
+<td>日期时间</td>
+</tr>
+</tbody>
+</table>
+<p data-block-id="20201224120447-ub63xgw">示例：</p>
+<pre data-block-id="20201224120447-ieeh0ht"><code class="language-sql highlight-chroma"><span class="highlight-k">SELECT</span> <span class="highlight-o">*</span> <span class="highlight-k">FROM</span> <span class="highlight-n">blocks</span> <span class="highlight-k">WHERE</span> <span class="highlight-n">content</span> <span class="highlight-k">LIKE</span> <span class="highlight-s1">&#39;%内容块%&#39;</span>
+</code></pre>
+<p data-block-id="20201224120447-g34nwns"><code>type</code> 内容块类型值列表请参考
+<md2website-block-ref src="../%e6%90%9c%e7%b4%a2%e8%bf%9b%e9%98%b6/2%20%e7%b1%bb%e5%9e%8b%e8%bf%87%e6%bb%a4.html#20201224092621-71qvlyb" title="这里">这里</md2website-block-ref>
+。</p>
+<h2 id="默认查询条件" data-block-id="20201224120447-lezmdb3">默认查询条件<a id="vditorAnchor-默认查询条件" class="vditor-anchor" href="#默认查询条件"><svg viewBox="0 0 16 16" version="1.1" width="16" height="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<ul data-block-id="20201224120447-ij3ivd5">
+<li data-block-id="20201224120447-u4tbyb3">如果不指定 <code>LIMIT</code>，则最多只返回前 32 条结果</li>
+</ul>
+
+</main>
+</script>

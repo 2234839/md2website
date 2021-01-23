@@ -1,0 +1,71 @@
+
+<!doctype html>
+<html lang="zh">
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>0 全局搜索文本模式</title>
+    <link rel="stylesheet" href="./../assets/github-markdown-css.css">
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vditor/dist/index.css" />
+    
+
+    
+
+    
+    <script src="./../assets/font-end-lib/all_components.js"></script>
+    
+    
+
+    
+</head>
+
+
+
+<main id="static_app_llej" class="markdown-body">
+    <h2 id="逻辑连接" data-block-id="20201224120447-u0j56c6">逻辑连接<a id="vditorAnchor-逻辑连接" class="vditor-anchor" href="#逻辑连接"><svg viewBox="0 0 16 16" version="1.1" width="16" height="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p data-block-id="20201224120447-2oqbb4v">支持操作符 <code>AND</code>、<code>OR</code> 和 <code>NOT</code>（注意需要大写），比如 <code>foo AND bar OR baz</code> 表示同时包含 foo 和 bar 或者包含 baz；<code>foo NOT bar</code> 表示包含 foo 但不包含 bar。</p>
+<ul data-block-id="20201224120447-a0vlow2">
+<li data-block-id="20201224120447-jfu79aa"><code>AND</code> 可以省略，比如 <code>foo AND bar</code> 可以简写为 <code>foo bar</code></li>
+<li data-block-id="20201224120447-kmokc07"><code>OR</code> 可以使用 <code>||</code> 代替，<code>AND</code> 可以使用 <code>&amp;&amp;</code> 代替，比如 <code>foo &amp;&amp; bar || baz</code></li>
+<li data-block-id="20201224120447-8fx1t61"><code>NOT</code> 可以简化为前缀 <code>!</code> 或者 <code>-</code>，比如 <code>foo NOT bar</code> 可以简写为 <code>foo !bar</code> 或者 <code>foo -bar</code></li>
+</ul>
+<h2 id="精确匹配" data-block-id="20201224120447-4lp3e8m">精确匹配<a id="vditorAnchor-精确匹配" class="vditor-anchor" href="#精确匹配"><svg viewBox="0 0 16 16" version="1.1" width="16" height="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p data-block-id="20201224120447-33lvpnj">支持通过 <code>&quot;foo&quot;</code> 指定精确匹配，比如 <code>foo !&quot;bar baz&quot;</code> 表示包含 foo 并且不包含 bar baz。</p>
+<h2 id="模糊匹配" data-block-id="20201224120447-qyyeg45">模糊匹配<a id="vditorAnchor-模糊匹配" class="vditor-anchor" href="#模糊匹配"><svg viewBox="0 0 16 16" version="1.1" width="16" height="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<ul data-block-id="20201224120447-gr6cz3e">
+<li data-block-id="20201224120447-levj9de">支持通过 <code>?</code> 指定单个字符，比如 <code>f?o</code> 能够模糊匹配到 fo、fao、fbo</li>
+<li data-block-id="20201224120447-n5cprty">支持通过 <code>*</code> 指定多个字符，比如 <code>f*o</code> 能够模糊匹配到 fo、fao、fabco</li>
+</ul>
+<h2 id="正则匹配" data-block-id="20201224120447-qrdsh1d">正则匹配<a id="vditorAnchor-正则匹配" class="vditor-anchor" href="#正则匹配"><svg viewBox="0 0 16 16" version="1.1" width="16" height="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p data-block-id="20201224120447-us77eor">支持通过 <code>/foo/</code> 指定正则表达式，比如 <code>/f[a-z]{2}/</code> 能够匹配到 f 开头跟两个 a-z 字母。</p>
+<h2 id="分组" data-block-id="20201224120447-dy5imww">分组<a id="vditorAnchor-分组" class="vditor-anchor" href="#分组"><svg viewBox="0 0 16 16" version="1.1" width="16" height="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p data-block-id="20201224120447-z4s69oi">支持通过 <code>(foo)</code> 指定优先级，比如 <code>foo AND (bar OR baz)</code> 表示同时包含 foo bar 或者是同时包含 foo baz。</p>
+<h2 id="指定字段" data-block-id="20201224120447-xse1wez">指定字段<a id="vditorAnchor-指定字段" class="vditor-anchor" href="#指定字段"><svg viewBox="0 0 16 16" version="1.1" width="16" height="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<ul data-block-id="20201224120447-mzirqam">
+<li data-block-id="20201224120447-odpvi6s"><code>path</code>：支持通过 <code>path:foo</code> 来指定文档路径，比如 <code>path:!foo</code> 表示在不包含路径为 foo 的文档中搜索；<code>path:(foo OR bar)</code> 表示在路径为 foo 或者 bar 的文档中搜索</li>
+<li data-block-id="20201224120447-1qxl54a"><code>type</code>：支持通过 <code>type:foo</code> 来指定内容块类型，可用的类型请参考
+<md2website-block-ref src="../%e6%90%9c%e7%b4%a2%e8%bf%9b%e9%98%b6/2%20%e7%b1%bb%e5%9e%8b%e8%bf%87%e6%bb%a4.html#20201222095049-hghafhe" title="类型过滤">类型过滤</md2website-block-ref>
+。比如 <code>type:h</code> 表示在标题中搜索；<code>type:(m OR c)</code> 表示在数学公式块或者代码块中搜索
+<ul data-block-id="20201225170521-up9fabj">
+<li data-block-id="20201225170521-xou1igt">关键字和类型的 <code>AND</code> 逻辑连接支持简写，比如 <code>foo type:h</code> 可以简写为 <code>h:foo</code>；<code>(foo OR bar) type:l</code> 可以简写为 <code>l:(foo OR bar)</code>。但是 <code>foo type:(l OR h)</code> 不能简写为 <code>(l OR h):foo</code>，也就是说指定的字段必须是具体的一个</li>
+</ul>
+</li>
+</ul>
+<h2 id="指定时间范围" data-block-id="20201224120447-u1uaz70">指定时间范围<a id="vditorAnchor-指定时间范围" class="vditor-anchor" href="#指定时间范围"><svg viewBox="0 0 16 16" version="1.1" width="16" height="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p data-block-id="20201224120447-1xrw84p">支持通过 <code>time: [20200219 TO 20200825]</code> 来指定内容块创建时间，比如 <code>time: [20200219163030 TO 20200825]</code> 表示在 2020 年 02 月 19 日下午 16 时 30 分 30 秒到 2020 年 08 月 25 日 00 时 00 分 00 秒创建的内容块中搜索。</p>
+<ul data-block-id="20201224120447-365qgns">
+<li data-block-id="20201224120447-na74z8g"><code>[</code> 表示大于等于，<code>{</code> 表示大于；<code>]</code> 表示小于等于，<code>}</code> 表示小于</li>
+<li data-block-id="20201224120447-0jra6d6">可以混合使用 <code>[</code> 和 <code>{</code>，比如 <code>time: [20200219 TO 20200825}</code></li>
+</ul>
+<h2 id="转义字符" data-block-id="20201225084055-c2etton">转义字符<a id="vditorAnchor-转义字符" class="vditor-anchor" href="#转义字符"><svg viewBox="0 0 16 16" version="1.1" width="16" height="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p data-block-id="20201225084111-oxznijj">如果需要搜索在表达式语法中出现的特殊字符，则需要使用 <code>\</code> 对其进行转义。这些特殊字符包括：<code>+-&amp;|!()&quot;?*[]{}:/</code>。比如 <code>\(foo \[bar \-baz</code> 将搜索 (foo [bar -baz。</p>
+
+</main>
+</script>

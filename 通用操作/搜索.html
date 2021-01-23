@@ -1,0 +1,63 @@
+
+<!doctype html>
+<html lang="zh">
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>搜索</title>
+    <link rel="stylesheet" href="./../assets/github-markdown-css.css">
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vditor/dist/index.css" />
+    
+
+    
+
+    
+    <script src="./../assets/font-end-lib/all_components.js"></script>
+    
+    
+
+    
+</head>
+
+
+
+<main id="static_app_llej" class="markdown-body">
+    <h2 id="全局搜索" data-block-id="20201230102737-wxxbidv">全局搜索<a id="vditorAnchor-全局搜索" class="vditor-anchor" href="#全局搜索"><svg viewBox="0 0 16 16" version="1.1" width="16" height="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p data-block-id="20201230102737-jdf65fg">通过 <kbd>Ctrl P</kbd> / <kbd>⌘ P</kbd> 触发搜索框，支持两种模式：</p>
+<ul data-block-id="20201230102737-cnsavm1">
+<li data-block-id="20201230102737-oflu3u8">
+<md2website-block-ref src="../%e6%90%9c%e7%b4%a2%e8%bf%9b%e9%98%b6/0%20%e5%85%a8%e5%b1%80%e6%90%9c%e7%b4%a2%e6%96%87%e6%9c%ac%e6%a8%a1%e5%bc%8f.html#20201222092940-f51gek9" title="文本模式">文本模式</md2website-block-ref>
+</li>
+<li data-block-id="20201230102737-b7bxt0a">
+<md2website-block-ref src="../%e6%90%9c%e7%b4%a2%e8%bf%9b%e9%98%b6/1%20%e5%85%a8%e5%b1%80%e6%90%9c%e7%b4%a2%20SQL%20%e6%a8%a1%e5%bc%8f.html#20201222093044-rx4zjoy" title="SQL 模式">SQL 模式</md2website-block-ref>
+</li>
+</ul>
+<h2 id="内容块引用搜索" data-block-id="20201230102737-3lhkak3">内容块引用搜索<a id="vditorAnchor-内容块引用搜索" class="vditor-anchor" href="#内容块引用搜索"><svg viewBox="0 0 16 16" version="1.1" width="16" height="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p data-block-id="20201230102737-dwbu1hh">在编辑器文档时通过输入 <code>((关键字</code> 触发，支持
+<md2website-block-ref src="../%e6%90%9c%e7%b4%a2%e8%bf%9b%e9%98%b6/2%20%e7%b1%bb%e5%9e%8b%e8%bf%87%e6%bb%a4.html#20201222095049-hghafhe" title="类型过滤">类型过滤</md2website-block-ref>
+。</p>
+<p data-block-id="20201230110038-2p9py38">#注意#：全局搜索和块引搜索在不指定类型过滤时仅返回文档根一层的直接子块。比如文档结构如下：</p>
+<pre data-block-id="20201230110328-ci5b7zp"><code class="language-md highlight-chroma"><span class="highlight-gu">## Heading
+</span><span class="highlight-gu"></span>
+Paragraph 1.
+
+<span class="highlight-k">*</span> List
+  <span class="highlight-k">*</span> Child List
+   
+    Child Paragraph.
+
+Paragraph 2.
+</code></pre>
+<p data-block-id="20201230110453-2b26qp3">则使用 <code>gra</code> 作为搜索条件时仅返回 <code>Paragraph 1</code>（类型为 <code>p</code>）、<code>List</code>（类型为 <code>l</code>）和 <code>Paragraph 2</code>（类型为 <code>p</code>）。如果需要返回非根容器块子块，需要使用类型过滤 <code>i:gra</code>，则返回 <code>List</code>（类型为 <code>i</code>）和 <code>Child List</code>（类型为 <code>i</code>） 两个列表项块。</p>
+<h2 id="关系图搜索" data-block-id="20201230102737-iwmfx40">关系图搜索<a id="vditorAnchor-关系图搜索" class="vditor-anchor" href="#关系图搜索"><svg viewBox="0 0 16 16" version="1.1" width="16" height="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p data-block-id="20201230102737-3woxo53">在关系图中根据关键字筛选过滤节点和连接。</p>
+
+</main>
+</script>
